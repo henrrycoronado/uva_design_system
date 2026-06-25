@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -40,4 +41,14 @@ class CustomButton extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(name: 'Default', type: CustomButton)
+Widget customButtonDefaultUseCase(BuildContext context) {
+  return CustomButton(onPressed: () {}, text: 'Click Me');
+}
+
+@widgetbook.UseCase(name: 'Loading', type: CustomButton)
+Widget customButtonLoadingUseCase(BuildContext context) {
+  return CustomButton(onPressed: () {}, text: 'Click Me', isLoading: true);
 }

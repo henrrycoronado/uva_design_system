@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class LogoutButtonWidget extends StatelessWidget {
   final VoidCallback onLogout;
@@ -23,4 +24,17 @@ class LogoutButtonWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: LogoutButtonWidget,
+)
+Widget logoutButtonDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: LogoutButtonWidget(
+      onLogout: () {},
+    ),
+  );
 }

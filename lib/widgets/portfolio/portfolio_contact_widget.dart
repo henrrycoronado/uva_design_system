@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/models/portfolio/contact_model.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 /// A pure UI widget for displaying support contact info.
 /// All actions (copy, email, call) are passed in as callbacks,
@@ -127,4 +128,23 @@ class PortfolioContactWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: PortfolioContactWidget,
+)
+Widget portfolioContactDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: PortfolioContactWidget(
+      contact: ContactModel(
+        email: 'soporte@uvoluntapp.com',
+        phone: '+591 77777777',
+      ),
+      onCopy: (text) {},
+      onSendEmail: (e, s, b) async => true,
+      onCallPhone: (p) async => true,
+    ),
+  );
 }

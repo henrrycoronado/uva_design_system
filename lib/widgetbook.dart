@@ -23,7 +23,10 @@ class WidgetbookApp extends StatelessWidget {
             WidgetbookTheme(name: 'Dark', data: ThemeData.dark()),
           ],
         ),
-        TextScaleAddon(scales: [1.0, 1.5, 2.0]),
+        TextScaleAddon(
+          min: 1.0,
+          max: 2.0,
+        ),
         LocalizationAddon(
           locales: [const Locale('en', 'US'), const Locale('es', 'ES')],
           localizationsDelegates: [
@@ -31,6 +34,7 @@ class WidgetbookApp extends StatelessWidget {
             DefaultWidgetsLocalizations.delegate,
           ],
         ),
+        // ignore: deprecated_member_use
         DeviceFrameAddon(
           devices: [
             Devices.ios.iPhone13,

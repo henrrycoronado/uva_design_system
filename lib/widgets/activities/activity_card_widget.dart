@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 import 'package:uva_design_system/models/activities/activity_response_dto.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
@@ -139,4 +140,54 @@ class ActivityCardWidget extends StatelessWidget {
         return Colors.black87;
     }
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Active',
+  type: ActivityCardWidget,
+)
+Widget activityCardActiveUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ActivityCardWidget(
+      activity: ActivityResponseDto(
+        uvaCode: 'UVA-001',
+        programCode: 'PRG-001',
+        programName: 'Program Name',
+        name: 'Reforestation in the Park',
+        description: 'Help us plant trees in the local park.',
+        startDate: DateTime.now(),
+        endDate: DateTime.now().add(const Duration(hours: 4)),
+        state: 'Active',
+        stateCode: 'ACTIVE',
+        requiresEnrollment: true,
+      ),
+      onTap: () {},
+    ),
+  );
+}
+
+@widgetbook.UseCase(
+  name: 'Draft',
+  type: ActivityCardWidget,
+)
+Widget activityCardDraftUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ActivityCardWidget(
+      activity: ActivityResponseDto(
+        uvaCode: 'UVA-002',
+        programCode: 'PRG-001',
+        programName: 'Program Name',
+        name: 'Beach Cleanup',
+        description: 'Clean the beach this weekend.',
+        startDate: DateTime.now().add(const Duration(days: 2)),
+        endDate: DateTime.now().add(const Duration(days: 2, hours: 3)),
+        state: 'Draft',
+        stateCode: 'DRAFT',
+        requiresEnrollment: false,
+      ),
+      onTap: () {},
+    ),
+  );
 }

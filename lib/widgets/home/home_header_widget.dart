@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class HomeHeaderWidget extends StatelessWidget {
   final String firstName;
@@ -45,4 +46,17 @@ class HomeHeaderWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: HomeHeaderWidget,
+)
+Widget homeHeaderDefaultUseCase(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: HomeHeaderWidget(
+      firstName: 'Juan',
+    ),
+  );
 }

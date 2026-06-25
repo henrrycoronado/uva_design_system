@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:uva_design_system/l10n/app_localizations.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class ProfileSettingsWidget extends StatefulWidget {
   final Locale currentLocale;
@@ -221,4 +222,22 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
       },
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ProfileSettingsWidget,
+)
+Widget profileSettingsDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ProfileSettingsWidget(
+      currentLocale: const Locale('es'),
+      currentTheme: ThemeMode.system,
+      currentTextScale: 1.0,
+      onChangeLocale: (v) {},
+      onChangeTheme: (v) {},
+      onChangeTextScale: (v) {},
+    ),
+  );
 }

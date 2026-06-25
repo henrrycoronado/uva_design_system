@@ -7,6 +7,7 @@ import 'package:uva_design_system/models/activities/create_activity_dto.dart';
 import 'package:uva_design_system/models/activities/create_activity_rule_dto.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import '../common/location_picker_dialog.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class CreateActivityFormWidget extends StatefulWidget {
   final String programCode;
@@ -384,4 +385,27 @@ class _CreateActivityFormWidgetState extends State<CreateActivityFormWidget> {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: CreateActivityFormWidget,
+)
+Widget createActivityFormDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: CreateActivityFormWidget(
+          programCode: 'PRG-001',
+          activityTypes: [
+            {'uvaCode': 'TYPE_1', 'name': 'Type 1'},
+            {'uvaCode': 'TYPE_2', 'name': 'Type 2'},
+          ],
+          onSubmit: (dto) async {},
+        ),
+      ),
+    ),
+  );
 }

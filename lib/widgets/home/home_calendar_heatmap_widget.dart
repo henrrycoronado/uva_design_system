@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uva_design_system/models/home/home_summary_dto.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class HomeCalendarHeatmapWidget extends StatelessWidget {
   final int month;
@@ -225,4 +226,25 @@ class HomeCalendarHeatmapWidget extends StatelessWidget {
     ];
     return months[month - 1];
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: HomeCalendarHeatmapWidget,
+)
+Widget homeCalendarHeatmapDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: HomeCalendarHeatmapWidget(
+      month: 6,
+      year: 2026,
+      dailyActivities: [
+        DailyActivityDto(day: 1, hours: 2.0),
+        DailyActivityDto(day: 5, hours: 5.0),
+        DailyActivityDto(day: 15, hours: 8.0),
+      ],
+      onPreviousMonth: () {},
+      onNextMonth: () {},
+    ),
+  );
 }

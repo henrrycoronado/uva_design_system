@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class CreateProgramFormWidget extends StatefulWidget {
   final Future<void> Function(String name, String? acronym) onSubmit;
@@ -125,4 +126,22 @@ class _CreateProgramFormWidgetState extends State<CreateProgramFormWidget> {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: CreateProgramFormWidget,
+)
+Widget createProgramFormDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: CreateProgramFormWidget(
+          onSubmit: (name, acronym) async {},
+        ),
+      ),
+    ),
+  );
 }

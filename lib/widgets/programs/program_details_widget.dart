@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:uva_design_system/models/programs/program_response_dto.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/utils/image_utils.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class ProgramDetailsWidget extends StatelessWidget {
   final ProgramResponseDto program;
@@ -275,4 +276,29 @@ class ProgramDetailsWidget extends StatelessWidget {
         return Colors.blue;
     }
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ProgramDetailsWidget,
+)
+Widget programDetailsDefaultUseCase(BuildContext context) {
+  return Scaffold(
+    body: SingleChildScrollView(
+      child: ProgramDetailsWidget(
+        program: ProgramResponseDto(
+          uvaCode: 'PRG-123',
+          name: 'Program Name',
+          description: 'Program Description',
+          acronym: 'PRG',
+          managerName: 'Manager Name',
+          color: '#4CAF50',
+          stateCode: 'ACTIVE',
+          createdAt: DateTime.now(),
+          managerProfileId: 'USR-1',
+          state: 'Active',
+        ),
+      ),
+    ),
+  );
 }

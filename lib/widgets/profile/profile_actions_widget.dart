@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class ProfileActionsWidget extends StatelessWidget {
   const ProfileActionsWidget({super.key});
@@ -58,4 +59,15 @@ class ProfileActionsWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ProfileActionsWidget,
+)
+Widget profileActionsDefaultUseCase(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: ProfileActionsWidget(),
+  );
 }

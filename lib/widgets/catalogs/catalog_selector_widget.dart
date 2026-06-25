@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:uva_design_system/models/catalogs/catalog_item_dto.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class CatalogSelectorWidget extends StatelessWidget {
   final String label;
@@ -119,4 +120,23 @@ class CatalogSelectorWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: CatalogSelectorWidget,
+)
+Widget catalogSelectorDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: CatalogSelectorWidget(
+      label: 'Select City',
+      items: [
+        CatalogItemDto(code: 'CBB', name: 'Cochabamba'),
+        CatalogItemDto(code: 'LPZ', name: 'La Paz'),
+        CatalogItemDto(code: 'SCZ', name: 'Santa Cruz'),
+      ],
+      onChanged: (item) {},
+    ),
+  );
 }

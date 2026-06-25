@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -75,4 +76,33 @@ class _CustomTextFieldState extends State<CustomTextField> {
       validator: widget.validator,
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: CustomTextField,
+)
+Widget customTextFieldDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: CustomTextField(
+      controller: TextEditingController(),
+      label: 'Enter text here',
+    ),
+  );
+}
+
+@widgetbook.UseCase(
+  name: 'Password (Obscured)',
+  type: CustomTextField,
+)
+Widget customTextFieldPasswordUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: CustomTextField(
+      controller: TextEditingController(),
+      label: 'Password',
+      obscureText: true,
+    ),
+  );
 }

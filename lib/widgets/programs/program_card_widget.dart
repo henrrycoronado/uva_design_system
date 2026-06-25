@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:uva_design_system/models/programs/program_response_dto.dart';
 import 'package:uva_design_system/utils/image_utils.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class ProgramCardWidget extends StatelessWidget {
   final ProgramResponseDto program;
@@ -109,4 +110,28 @@ class ProgramCardWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ProgramCardWidget,
+)
+Widget programCardDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ProgramCardWidget(
+      program: ProgramResponseDto(
+        uvaCode: 'PRG-001',
+        name: 'Education for All',
+        description: 'Provide education to children.',
+        managerName: 'Ana Perez',
+        color: '#4CAF50',
+        createdAt: DateTime.now(),
+        managerProfileId: 'USR-1',
+        state: 'Active',
+        stateCode: 'ACTIVE',
+      ),
+      onTap: () {},
+    ),
+  );
 }

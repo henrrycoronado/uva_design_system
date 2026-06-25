@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:uva_design_system/models/programs/program_response_dto.dart';
 import 'package:uva_design_system/models/programs/update_program_dto.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class EditProgramFormWidget extends StatefulWidget {
   final ProgramResponseDto initialData;
@@ -268,4 +269,32 @@ class _EditProgramFormWidgetState extends State<EditProgramFormWidget> {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: EditProgramFormWidget,
+)
+Widget editProgramFormDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: EditProgramFormWidget(
+          initialData: ProgramResponseDto(
+            uvaCode: 'PRG-123',
+            name: 'Program Name',
+            description: 'Program Description',
+            managerName: 'Manager',
+            stateCode: 'ACTIVE',
+            createdAt: DateTime.now(),
+            managerProfileId: 'USR-1',
+            state: 'Active',
+          ),
+          onSubmit: (dto) async {},
+        ),
+      ),
+    ),
+  );
 }

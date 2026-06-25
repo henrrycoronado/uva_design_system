@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:uva_design_system/l10n/app_localizations.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class PermissionDialog extends StatelessWidget {
   final String title;
@@ -73,4 +74,17 @@ class PermissionDialog extends StatelessWidget {
       ],
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: PermissionDialog,
+)
+Widget permissionDialogDefaultUseCase(BuildContext context) {
+  return PermissionDialog(
+    title: 'Camera Permission',
+    description: 'We need access to your camera to take a profile picture.',
+    icon: Icons.camera_alt,
+    onGoToSettings: () {},
+  );
 }

@@ -8,6 +8,7 @@ import 'package:uva_design_system/models/activities/activity_response_dto.dart';
 import 'package:uva_design_system/models/activities/enrollment_response_dto.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
 import 'package:uva_design_system/utils/image_utils.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 /// A pure UI widget that displays the details of an Activity.
 /// It receives all state from outside and exposes callbacks for actions,
@@ -544,4 +545,30 @@ class ActivityDetailsContent extends StatelessWidget {
   String _formatDate(DateTime date) {
     return '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ActivityDetailsContent,
+)
+Widget activityDetailsContentDefaultUseCase(BuildContext context) {
+  return ActivityDetailsContent(
+    activity: ActivityResponseDto(
+      uvaCode: 'ACT-123',
+      programCode: 'PRG-123',
+      programName: 'Program Name',
+      name: 'Activity Name',
+      description: 'Activity Description',
+      startDate: DateTime.now(),
+      endDate: DateTime.now().add(const Duration(hours: 2)),
+      stateCode: 'ACTIVE',
+      state: 'Active',
+      requiresEnrollment: true,
+    ),
+    enrollments: [],
+    isLoadingEnrollments: false,
+    onEnroll: () async {},
+    onCancelEnrollment: (code) async {},
+    onBack: () {},
+  );
 }

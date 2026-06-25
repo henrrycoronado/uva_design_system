@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class SuggestedActivitiesWidget extends StatelessWidget {
   const SuggestedActivitiesWidget({super.key});
@@ -115,4 +116,15 @@ class SuggestedActivitiesWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: SuggestedActivitiesWidget,
+)
+Widget suggestedActivitiesDefaultUseCase(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: SuggestedActivitiesWidget(),
+  );
 }

@@ -9,6 +9,7 @@ import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
 import 'package:uva_design_system/utils/image_utils.dart';
 import 'package:uva_design_system/widgets/catalogs/catalog_selector_widget.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class ProfileDetailsWidget extends StatefulWidget {
   final ProfileResponseDto profile;
@@ -426,4 +427,27 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget> {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ProfileDetailsWidget,
+)
+Widget profileDetailsDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ProfileDetailsWidget(
+      profile: ProfileResponseDto(
+        uvaCode: 'USR-123',
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        personalGoalHours: 100,
+        stateCode: 'ACTIVE',
+      ),
+      careerOptions: [],
+      onSave: (dto) async {},
+      onPhotoUpload: (path) async {},
+    ),
+  );
 }

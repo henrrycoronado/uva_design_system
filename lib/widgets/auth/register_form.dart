@@ -6,6 +6,7 @@ import 'package:uva_design_system/utils/validators.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/widgets/common/custom_button.dart';
 import 'package:uva_design_system/widgets/common/custom_text_field.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class RegisterForm extends StatefulWidget {
   final bool isLoading;
@@ -159,4 +160,18 @@ class _RegisterFormState extends State<RegisterForm> {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: RegisterForm,
+)
+Widget registerFormDefaultUseCase(BuildContext context) {
+  return Scaffold(
+    body: Center(
+      child: RegisterForm(
+        onRegister: (firstName, lastName, email, password) {},
+      ),
+    ),
+  );
 }

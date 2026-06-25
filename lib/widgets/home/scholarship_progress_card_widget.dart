@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/models/home/scholarship_response_dto.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class ScholarshipProgressCardWidget extends StatelessWidget {
   final ScholarshipResponseDto scholarship;
@@ -63,4 +64,27 @@ class ScholarshipProgressCardWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: ScholarshipProgressCardWidget,
+)
+Widget scholarshipProgressCardDefaultUseCase(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ScholarshipProgressCardWidget(
+      scholarship: ScholarshipResponseDto(
+        uvaCode: 'SCH-001',
+        profileCode: 'PRF-001',
+        volunteerName: 'Juan Perez',
+        scholarshipTypeCode: 'ACADEMIC',
+        scholarshipType: 'Academic Scholarship',
+        reason: 'Excellent grades',
+        requiredHours: 80,
+        stateCode: 'ACTIVE',
+      ),
+      validatedHours: 45,
+    ),
+  );
 }

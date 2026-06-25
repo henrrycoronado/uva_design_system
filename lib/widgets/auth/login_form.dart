@@ -6,6 +6,7 @@ import 'package:uva_design_system/utils/validators.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/widgets/common/custom_button.dart';
 import 'package:uva_design_system/widgets/common/custom_text_field.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class LoginForm extends StatefulWidget {
   final bool isLoading;
@@ -96,4 +97,18 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: LoginForm,
+)
+Widget loginFormDefaultUseCase(BuildContext context) {
+  return Scaffold(
+    body: Center(
+      child: LoginForm(
+        onLogin: (email, password) {},
+      ),
+    ),
+  );
 }

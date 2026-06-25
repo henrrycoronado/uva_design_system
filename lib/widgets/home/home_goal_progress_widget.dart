@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uva_design_system/l10n/app_localizations.dart';
 import 'package:uva_design_system/theme/app_colors.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class HomeGoalProgressWidget extends StatelessWidget {
   final double personalGoal;
@@ -131,4 +132,19 @@ class HomeGoalProgressWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: 'Default',
+  type: HomeGoalProgressWidget,
+)
+Widget homeGoalProgressDefaultUseCase(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: HomeGoalProgressWidget(
+      personalGoal: 100,
+      scholarshipGoal: 50,
+      currentMonthHours: 35,
+    ),
+  );
 }
